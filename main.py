@@ -4,7 +4,7 @@ from predictor.AbstractPredictor import AbstractPredictor
 
 from flask import Flask, send_from_directory
 
-from utils.azure_storage import download_file_from_azure
+from utils.gcs import download_blob
 from utils.csv import *
 
 app = Flask(__name__)
@@ -19,8 +19,8 @@ def index():
 def predict(predictor_name):
 
     # Download all the files that you need for your predictors
-    download_file_from_azure(container_name='files', blob_name='sample_predictions_submission.csv')
-    download_file_from_azure(container_name='files', blob_name='historical_win-loose-draw_ratios.csv')
+    download_blob(blob_name='sample_predictions_submission.csv')
+    download_blob(blob_name='historical_win-loose-draw_ratios.csv')
 
     # Use a sample file to load all matches
     matches = read_csv('sample_predictions_submission.csv')
