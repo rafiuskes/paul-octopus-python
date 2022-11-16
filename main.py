@@ -1,11 +1,10 @@
 import importlib
 
-from predictor.AbstractPredictor import AbstractPredictor
-
 from flask import Flask, send_from_directory
 
-from utils.gcs import download_blob
+from predictor.AbstractPredictor import AbstractPredictor
 from utils.csv import *
+from utils.gcs import download_blob
 
 app = Flask(__name__)
 

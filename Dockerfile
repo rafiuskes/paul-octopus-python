@@ -3,7 +3,8 @@ EXPOSE 8080
 
 WORKDIR /app
 
-COPY . .
+COPY . /app/
 RUN pip install -r requirements.txt
+RUN ["chmod", "+x", "./entrypoint.sh"]
 
-CMD /app/entrypoint.sh
+ENTRYPOINT python main.py
